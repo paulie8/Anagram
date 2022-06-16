@@ -1,0 +1,59 @@
+import pandas as pd
+df=pd.read_csv(r"C:\Users\rushi\OneDrive\Documents\words.csv")
+df.dropna(inplace=True)
+print("Enter your code")
+laila=[]
+message=input()
+def funct_1(stringg, a):
+    conut=0
+    c=0
+    for j in range(len(stringg)):
+             if (a.find(stringg[conut:conut+1])!=-1):
+                 c+=1
+             conut+=1
+    return c   
+
+
+def absolut(counter):
+    c=0
+    for i in laila:
+        if (counter!=i):
+            c+=1
+    if (c==len(laila)):
+        return True
+    else:
+        return False
+    
+    
+def mchu(a, laila):
+    array=df["word"].tolist()
+    arr=[]
+    value=0
+    j=0
+    count=0
+
+    for i in range(len(a)):
+         arr.append(a[j:j+1])
+         j+=1
+    for counter in array:
+        count=0
+        for abc in arr:
+            if(counter.find(abc)!=-1  and len(counter)==len(a) and absolut(counter)):
+              count+=1
+              string=counter
+        if(count==len(a)):
+          if (funct_1(string, a)==len(string)):
+               break      
+        
+    if (count==len(a)):
+        print(string, end=' ')
+        return string
+    else:
+        return ""
+       
+def abdul():
+    a=message.split()
+    for i in a:
+       laila.append(mchu(i, laila))
+for i in range(1):
+    abdul()
