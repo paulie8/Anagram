@@ -1,0 +1,36 @@
+import random
+def replacer(s, newstring, index, nofail=False):
+    if not nofail and index not in range(len(s)):
+        raise ValueError("index outside given string")
+    if index < 0:  
+        return newstring + s
+    if index > len(s):  
+        return s + newstring
+    return s[:index] + newstring + s[index + 1:]
+
+print("Enter your message")
+a=input()
+s=""
+arr=[]
+j=0
+i=0
+abc=a.split()
+for i in range(len(abc)):
+    j=0
+    s=""
+    arr=[]
+    lol=abc[i]
+    while (lol!=""):
+        arr.append(lol[j:j+1])
+        lol=replacer(lol, "", j)
+     
+        
+    for abba in range(len(arr)):
+        alpha=random.randint(0, (len(arr)-1))
+        s=s+arr[alpha]
+        del arr[alpha]
+        
+    print (s)
+    i+=1
+    
+        
